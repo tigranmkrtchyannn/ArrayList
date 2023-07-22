@@ -123,7 +123,7 @@ public class ArrayList<E> implements List<E> {
         }
     @Override
     public int indexOf(E value){
-        for( int i = 0 ; i < element.length;i++){
+        for( int i = 0 ; i < size;i++){
             if(element[i].equals(value)){
                 return i;
             }
@@ -226,7 +226,7 @@ public class ArrayList<E> implements List<E> {
 
     @Override
     public boolean addAll(int index, List<? extends E> otherList) {
-        if( index < 0 || index >size){
+        if( index < 0 || index > size){
             throw new IndexOutOfBoundsException("invalid index " + index);
         }
        int otherSize = otherList.size();
@@ -234,7 +234,7 @@ public class ArrayList<E> implements List<E> {
             return false;
         }
         newArrray(size+otherSize);
-        for (int i =size-1;i>=0;i++){
+        for (int i =size-1;i>=index;i--){
             element[i + otherSize]= element[i];
         }
         int newIndex = index;
@@ -260,7 +260,7 @@ public class ArrayList<E> implements List<E> {
     }
 @Override
     public int hashCode(){
-        int heshcode = 0;
+        int heshcode =0 ;
 
     for(int i = 0 ; i < size;i++){
     E value = get(i);
